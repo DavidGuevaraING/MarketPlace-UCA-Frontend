@@ -15,8 +15,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen">
-      <Particles
+<section className="relative pb-20">
+<Particles
         id="tsparticles"
         options={{
           background: {
@@ -96,10 +96,9 @@ const Hero = () => {
           },
           retina_detect: true
         }}
-        className="absolute inset-0 z-0"
-        style={{ pointerEvents: 'auto' }}
+        className="absolute inset-0 z-0 pointer-events-none"
       />
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-20 lg:px-24 xl:px-32 flex flex-col md:flex-row items-center justify-between min-h-screen md:min-h-screen gap-4 sm:gap-6 md:gap-12 pt-32 sm:pt-36 md:pt-44">
+      <div className="relative z-10 w-full px-4 sm:px-6 md:px-20 lg:px-24 xl:px-32 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 md:gap-12 pt-32 sm:pt-36 md:pt-44">
         <div className="w-full md:w-1/2 text-center md:text-left mb-10 sm:mb-12 md:mb-16 lg:mb-20 2xl:mb-24">
           <motion.h1
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 font-montserrat mb-4 sm:mb-6 md:mb-8"
@@ -143,6 +142,7 @@ const Hero = () => {
 
         </motion.div>
       </div>
+     
     </section>
   );
 };
