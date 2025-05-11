@@ -118,7 +118,7 @@ const Hero = () => {
             Un espacio donde los estudiantes pueden comprar y vender lo que les ayuda a crecer
           </motion.p>
           <motion.button
-            className="bg-[#007BFF] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-md text-sm sm:text-base md:text-xl font-medium font-montserrat hover:bg-[#0056b3] transition-colors"
+            className="bg-[#000000] text-white px-6 sm:px-8 py-2 sm:py-3 rounded-md text-sm sm:text-base md:text-xl font-medium font-montserrat hover:bg-[#0056b3] transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, y: 20 }}

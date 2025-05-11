@@ -5,6 +5,7 @@ import Resources from '../components/Resources';
 import FranjaAzul from '../components/FranjaAzul';
 import HowItWorks from '../components/HowItWorks';
 import Benefits from '../components/Benefits';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Resources />
       <HowItWorks />
       <Benefits />
+      <Footer />
     </div>
   );
 };
