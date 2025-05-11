@@ -17,12 +17,12 @@ const Navbar = () => {
   // Animación para el búho (solo la imagen)
   const owlVariants = {
     animate: {
-      rotate: [0, -10, 0, 10, 0], // Rotación más pronunciada para un sacudido rápido
+      rotate: [0, -10, 0, 10, 0],
       transition: {
-        duration: 0.5, // Duración más corta para mayor rapidez
-        repeat: Infinity, // Repetir infinitamente
-        repeatDelay: 2, // Pausa de 2 segundos entre ciclos
-        ease: 'easeInOut', // Transición suave
+        duration: 0.5,
+        repeat: Infinity,
+        repeatDelay: 2,
+        ease: 'easeInOut',
       }
     },
     hover: { scale: 1.05, transition: { duration: 0.3 } }
@@ -52,8 +52,8 @@ const Navbar = () => {
               />
               <span className="ml-3 sm:ml-4 text-2xl sm:text-4xl font-bold text-gray-900">MarketPlace UCA</span>
             </motion.div>
-            <div className="flex items-center space-x-12 sm:space-x-16 md:space-x-20 ml-10 sm:ml-12 md:ml-16">
-              <div className="hidden md:flex md:space-x-12 lg:space-x-16">
+            <div className="flex items-center space-x-12 sm:space-x-16 md:space-x-16 lg:space-x-20 ml-6 sm:ml-8 md:ml-8 lg:ml-16">
+              <div className="hidden lg:flex lg:space-x-10">
                 <motion.a
                   href="#"
                   className="text-gray-900 px-4 py-2 rounded-md text-base md:text-lg lg:text-xl font-medium flex items-center space-x-2 whitespace-nowrap"
@@ -61,7 +61,7 @@ const Navbar = () => {
                   whileHover="hover"
                   whileTap="tap"
                 >
-                  <img src="/compra.gif" alt="Cómo funciona icon" className="h-6 w-6 md:h-7 md:w-7" />
+                  <img src="/compra.gif" alt="Cómo funciona icon" className="h-6 w-6 md:h-8 md:w-8" />
                   <span>Cómo funciona</span>
                 </motion.a>
                 <motion.a
@@ -71,7 +71,7 @@ const Navbar = () => {
                   whileHover="hover"
                   whileTap="tap"
                 >
-                  <img src="/beneficios.gif" alt="Beneficios icon" className="h-6 w-6 md:h-7 md:w-7" />
+                  <img src="/beneficios.gif" alt="Beneficios icon" className="h-6 w-6 md:h-8 md:w-8" />
                   <span>Beneficios</span>
                 </motion.a>
                 <motion.a
@@ -82,10 +82,10 @@ const Navbar = () => {
                   whileTap="tap"
                 >
                   <img src="/acceso.gif" alt="Iniciar sesión icon" className="h-7 w-7 md:h-8 md:w-8" />
-                  <span>Inicia sesión</span>
+                  <span>Iniciar sesión</span>
                 </motion.a>
               </div>
-              <div className="md:hidden flex items-center">
+              <div className="lg:hidden flex items-center">
                 <motion.button
                   onClick={toggleMenu}
                   className="text-gray-900 hover:text-[#007BFF] focus:outline-none"
@@ -117,37 +117,37 @@ const Navbar = () => {
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        className="md:hidden bg-white"
+        className="lg:hidden bg-white"
       >
         <div className="px-4 pt-3 pb-4 space-y-2 text-center">
           <motion.a
             href="#"
-            className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"
+            className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-xl md:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"
             variants={linkVariants}
             whileHover="hover"
             whileTap="tap"
           >
-            <img src="/compra.gif" alt="Cómo funciona icon" className="h-5 w-5 sm:h-6 sm:w-6" />
+            <img src="/compra.gif" alt="Cómo funciona icon" className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
             <span>Cómo funciona</span>
           </motion.a>
           <motion.a
             href="#"
-            className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"
+            className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-xl md:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"
             variants={linkVariants}
             whileHover="hover"
             whileTap="tap"
           >
-            <img src="/beneficios.gif" alt="Beneficios icon" className="h-5 w-5 sm:h-6 sm:w-6" />
+            <img src="/beneficios.gif" alt="Beneficios icon" className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
             <span>Beneficios</span>
           </motion.a>
           <motion.a
             href="#"
-            className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"
+            className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-xl md:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"
             variants={linkVariants}
             whileHover="hover"
             whileTap="tap"
           >
-            <img src="/acceso.gif" alt="Iniciar sesión icon" className="h-5 w-5 sm:h-6 sm:w-6" />
+            <img src="/acceso.gif" alt="Iniciar sesión icon" className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
             <span>Iniciar sesión</span>
           </motion.a>
         </div>
