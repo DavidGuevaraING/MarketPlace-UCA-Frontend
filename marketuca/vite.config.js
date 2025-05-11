@@ -15,5 +15,9 @@ export default defineConfig({
         plugins: [],
       },
     }),
+    
   ],
+  optimizeDeps: {
+    include: ['react-tsparticles', 'tsparticles']
+  },
 })
