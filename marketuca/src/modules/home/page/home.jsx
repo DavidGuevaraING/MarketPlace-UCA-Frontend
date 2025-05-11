@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import Resources from '../components/Resources';
 import FranjaAzul from '../components/FranjaAzul';
 import HowItWorks from '../components/HowItWorks';
+import Benefits from '../components/Benefits';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <FranjaAzul />
       <Resources />
       <HowItWorks />
+      <Benefits />
     </div>
   );
 };
