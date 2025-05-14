@@ -80,9 +80,9 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col items-center md:items-start">
+        {/* <div className="flex flex-col items-center md:items-start">
           <h4 className="text-lg font-semibold font-montserrat mb-4">Síguenos</h4>
-          <div className="flex gap-4">
+         <div className="flex gap-4">
             {socials.map((social, index) => (
               <motion.a
                 key={social.name}
@@ -104,7 +104,8 @@ const Footer = () => {
               </motion.a>
             ))}
           </div>
-        </div>
+          
+        </div>*/}
       </div>
       <div className="mt-8 text-center text-gray-400">
         <p>© 2025 Marketplace UCA. Todos los derechos reservados.</p>
