@@ -44,7 +44,19 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
         setIsMenuOpen(false);
         // Aquí puedes integrar tu lógica de cierre de sesión (por ejemplo, limpiar tokens, redirigir, etc.)
     };
-
+    // Animación para el búho (solo la imagen)
+    const owlVariants = {
+        animate: {
+            rotate: [0, -10, 0, 10, 0],
+            transition: {
+                duration: 0.5,
+                repeat: Infinity,
+                repeatDelay: 2,
+                ease: 'easeInOut',
+            }
+        },
+        hover: { scale: 1.05, transition: { duration: 0.3 } }
+    };
     return (
         <motion.nav
             initial={{ y: -100 }}
@@ -53,12 +65,20 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
             className="sticky top-0 z-50 bg-white border-b shadow-sm"
         >
             <div className="container flex items-center justify-between h-16 px-4 mx-auto">
+
                 <motion.div
                     className="flex items-center gap-2"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <ShoppingBag className="w-6 h-6 text-[#0056b3]" />
+                    <motion.img
+                        variants={owlVariants}
+                        animate="animate"
+                        className="h-8 w-8 sm:h-10 sm:w-10"
+                        src="/buho.png"
+                        alt="MarketPlace UCA Logo"
+                    />
+                    { /*<img src="/buho.png" alt="Logo búho" className="w-6 h-6" />*/}
                     <span className="text-xl font-bold text-[#0056b3]">MarketPlace UCA</span>
                 </motion.div>
                 <div className="flex items-center max-w-md w-full relative">
