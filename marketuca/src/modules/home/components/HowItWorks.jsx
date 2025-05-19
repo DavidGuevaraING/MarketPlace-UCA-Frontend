@@ -9,7 +9,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 py-16 z-20 relative">
+    <section id="how-it-works" className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 py-16 z-20 relative">
       <div className="w-full max-w-screen-xl flex flex-col md:flex-row items-center justify-between gap-10">
         <div className="w-full md:w-3/5 space-y-10">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-montserrat mb-10">

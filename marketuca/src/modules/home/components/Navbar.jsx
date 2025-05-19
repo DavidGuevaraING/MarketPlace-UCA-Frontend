@@ -8,6 +8,22 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  // Función para manejar el desplazamiento suave con compensación por la altura de la Navbar
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const navbarHeight = document.querySelector('nav').offsetHeight; // Altura de la Navbar
+      const sectionPosition = section.getBoundingClientRect().top + window.scrollY; // Posición de la sección
+      const offsetPosition = sectionPosition - navbarHeight; // Compensar la altura de la Navbar
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+    setIsOpen(false); // Cerrar el menú móvil después de hacer clic
+  };
+
   // Variantes para animaciones de hover y tap en los enlaces
   const linkVariants = {
     hover: { scale: 1.05, color: '#007BFF', transition: { duration: 0.2 } },
@@ -54,8 +70,8 @@ const Navbar = () => {
             </motion.div>
             <div className="flex items-center space-x-12 sm:space-x-16 md:space-x-16 lg:space-x-20 ml-6 sm:ml-8 md:ml-8 lg:ml-16">
               <div className="hidden lg:flex lg:space-x-10">
-                <motion.a
-                  href="#"
+                <motion.button
+                  onClick={() => scrollToSection('how-it-works')}
                   className="text-gray-900 px-4 py-2 rounded-md text-base md:text-lg lg:text-xl font-medium flex items-center space-x-2 whitespace-nowrap"
                   variants={linkVariants}
                   whileHover="hover"
@@ -63,9 +79,9 @@ const Navbar = () => {
                 >
                   <img src="/compra.gif" alt="Cómo funciona icon" className="h-6 w-6 md:h-8 md:w-8" />
                   <span>Cómo funciona</span>
-                </motion.a>
-                <motion.a
-                  href="#"
+                </motion.button>
+                <motion.button
+                  onClick={() => scrollToSection('benefits')}
                   className="text-gray-900 px-4 py-2 rounded-md text-base md:text-lg lg:text-xl font-medium flex items-center space-x-2 whitespace-nowrap"
                   variants={linkVariants}
                   whileHover="hover"
@@ -73,7 +89,7 @@ const Navbar = () => {
                 >
                   <img src="/beneficios.gif" alt="Beneficios icon" className="h-6 w-6 md:h-8 md:w-8" />
                   <span>Beneficios</span>
-                </motion.a>
+                </motion.button>
                 <motion.a
                   href="#"
                   className="text-gray-900 px-4 py-2 rounded-md text-base md:text-lg lg:text-xl font-medium flex items-center space-x-2 whitespace-nowrap"
@@ -120,8 +136,8 @@ const Navbar = () => {
         className="lg:hidden bg-white"
       >
         <div className="px-4 pt-3 pb-4 space-y-2 text-center">
-          <motion.a
-            href="#"
+          <motion.button
+            onClick={() => scrollToSection('how-it-works')}
             className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-xl md:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"
             variants={linkVariants}
             whileHover="hover"
@@ -129,9 +145,9 @@ const Navbar = () => {
           >
             <img src="/compra.gif" alt="Cómo funciona icon" className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
             <span>Cómo funciona</span>
-          </motion.a>
-          <motion.a
-            href="#"
+          </motion.button>
+          <motion.button
+            onClick={() => scrollToSection('benefits')}
             className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-xl md:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"
             variants={linkVariants}
             whileHover="hover"
@@ -139,7 +155,7 @@ const Navbar = () => {
           >
             <img src="/beneficios.gif" alt="Beneficios icon" className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7" />
             <span>Beneficios</span>
-          </motion.a>
+          </motion.button>
           <motion.a
             href="#"
             className="block text-gray-900 hover:text-[#007BFF] px-4 py-3 rounded-md text-lg sm:text-xl md:text-2xl font-medium flex items-center justify-center space-x-2 whitespace-nowrap"

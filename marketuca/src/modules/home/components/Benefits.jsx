@@ -47,6 +47,7 @@ const Benefits = () => {
 
   return (
     <motion.section
+      id="benefits"
       className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-12 py-16 z-10 relative"
       initial="hidden"
       whileInView="visible"
