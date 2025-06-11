@@ -1,93 +1,12 @@
 
 import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
 import React from "react";
 import RegisterPrompt from "./RegisterPrompt.jsx";
+import ParticlesBackground from "../../utils/ParticlesBackground.jsx";
 const LoginForm = () => {
     return (
         <section className="relative min-h-screen">
-            <Particles
-                id="tsparticles"
-                options={{
-                    background: {
-                        color: {
-                            value: '#f0f4f8'
-                        }
-                    },
-                    particles: {
-                        number: {
-                            value: 80,
-                            density: {
-                                enable: true,
-                                value_area: 700
-                            }
-                        },
-                        color: {
-                            value: ['#007BFF', '#FFFFFF', '#00C4B4']
-                        },
-                        shape: {
-                            type: 'circle'
-                        },
-                        opacity: {
-                            value: 0.6,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 1,
-                                opacity_min: 0.2,
-                                sync: false
-                            }
-                        },
-                        size: {
-                            value: 5,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 2,
-                                size_min: 0.5,
-                                sync: false
-                            }
-                        },
-                        line_linked: {
-                            enable: false
-                        },
-                        move: {
-                            enable: true,
-                            speed: 1.5,
-                            direction: 'none',
-                            random: true,
-                            straight: false,
-                            out_mode: 'out',
-                            bounce: false
-                        }
-                    },
-                    interactivity: {
-                        detect_on: 'canvas',
-                        events: {
-                            onhover: {
-                                enable: true,
-                                mode: 'repulse'
-                            },
-                            onclick: {
-                                enable: true,
-                                mode: 'push'
-                            },
-                            resize: true
-                        },
-                        modes: {
-                            repulse: {
-                                distance: 100,
-                                duration: 0.4
-                            },
-                            push: {
-                                particles_nb: 4
-                            }
-                        }
-                    },
-                    retina_detect: true
-                }}
-                className="absolute inset-0 z-0 pointer-events-none"
-            />
+            <ParticlesBackground/>
             <div className="relative min-h-screen z-20 flex flex-col items-center justify-center">
                 <motion.div
                     initial={{ opacity: 0, y: -50 }}
