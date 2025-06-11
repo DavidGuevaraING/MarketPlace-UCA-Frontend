@@ -1,5 +1,5 @@
-import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/Footer.jsx";
+import NavbarNoAuth from "../../utils/navbar/NavBarNoAuth.jsx";
+import Footer from "../../utils/footer/Footer.jsx";
 import RegisterForm from "../components/RegisterForm.jsx";
 
 const register = () => {
@@ -7,7 +7,7 @@ const register = () => {
 
     return(
         <div>
-            <Navbar/>
+            <NavbarNoAuth/>
             <RegisterForm/>
             <Footer/>
         </div>
