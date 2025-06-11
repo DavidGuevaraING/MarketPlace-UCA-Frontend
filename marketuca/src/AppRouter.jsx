@@ -5,6 +5,7 @@ import Dashboard from "./modules/dashboard/page/dashboard";
 import FavoritesPage from "./modules/dashboard/page/FavoritesPage";
 import Login from "./modules/login/page/login.jsx";
 import Register from "./modules/register/page/register.jsx";
+import Profile from "./modules/profile/page/profile.jsx";
 export const AppRouter = () => {
   return (
     <Routes>
@@ -13,6 +14,7 @@ export const AppRouter = () => {
       <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 };
