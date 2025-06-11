@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,20 +55,23 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
         <div className="flex justify-center items-center h-20 sm:h-24 md:h-28">
           <div className="flex items-center w-full max-w-6xl justify-between">
-            <motion.div
-              className="flex-shrink-0 flex items-center"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.img
-                variants={owlVariants}
-                animate="animate"
-                className="h-8 w-8 sm:h-10 sm:w-10"
-                src="/buho.png"
-                alt="MarketPlace UCA Logo"
-              />
-              <span className="ml-3 sm:ml-4 text-2xl sm:text-4xl font-bold text-gray-900">MarketPlace UCA</span>
-            </motion.div>
+            <Link to="/">
+              <motion.div
+                  className="flex-shrink-0 flex items-center"
+                  whileHover={{scale: 1.05}}
+                  transition={{duration: 0.3}}
+              >
+                <motion.img
+                    variants={owlVariants}
+                    animate="animate"
+                    className="h-8 w-8 sm:h-10 sm:w-10"
+                    src="/buho.png"
+                    alt="MarketPlace UCA Logo"
+                />
+                <span
+                    className="ml-3 sm:ml-4 text-2xl sm:text-4xl font-bold text-gray-900">MarketPlace UCA</span>
+              </motion.div>
+            </Link>
             <div className="flex items-center space-x-12 sm:space-x-16 md:space-x-16 lg:space-x-20 ml-6 sm:ml-8 md:ml-8 lg:ml-16">
               <div className="hidden lg:flex lg:space-x-10">
                 <motion.button
@@ -90,16 +94,21 @@ const Navbar = () => {
                   <img src="/beneficios.gif" alt="Beneficios icon" className="h-6 w-6 md:h-8 md:w-8" />
                   <span>Beneficios</span>
                 </motion.button>
-                <motion.a
-                  href="#"
-                  className="text-gray-900 px-4 py-2 rounded-md text-base md:text-lg lg:text-xl font-medium flex items-center space-x-2 whitespace-nowrap"
-                  variants={linkVariants}
-                  whileHover="hover"
-                  whileTap="tap"
-                >
-                  <img src="/acceso.gif" alt="Iniciar sesión icon" className="h-7 w-7 md:h-8 md:w-8" />
-                  <span>Iniciar sesión</span>
-                </motion.a>
+                <Link to={{
+                  pathname: '/login',
+                }}>
+                  <motion.a
+                      href="#"
+                      className="text-gray-900 px-4 py-2 rounded-md text-base md:text-lg lg:text-xl font-medium flex items-center space-x-2 whitespace-nowrap"
+                      variants={linkVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                  >
+                    <img src="/acceso.gif" alt="Iniciar sesión icon"
+                         className="h-7 w-7 md:h-8 md:w-8"/>
+                    <span>Iniciar sesión</span>
+                  </motion.a>
+                </Link>
               </div>
               <div className="lg:hidden flex items-center">
                 <motion.button
