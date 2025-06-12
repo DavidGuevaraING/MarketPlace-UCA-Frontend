@@ -62,7 +62,7 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="sticky top-0 z-50 bg-white border-b shadow-sm"
+            className="sticky top-0 z-50 bg-white border-white-b shadow-sm"
         >
             <div className="container flex items-center justify-between h-16 px-4 mx-auto">
 
@@ -150,11 +150,11 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
                                             className="flex items-center gap-2 px-4 py-2 text-gray-700 cursor-pointer"
                                             onClick={() => {
                                                 setIsMenuOpen(false);
-                                                window.location.href = "/my-items"; // Recarga la página al redirigir
+                                                window.location.href = "/profile"; // Recarga la página al redirigir
                                             }}
                                         >
                                             <ShoppingBag className="w-4 h-4" />
-                                            <span>Mis artículos</span>
+                                            <span>Mi perfil</span>
                                         </motion.div>
                                         <motion.div
                                             variants={menuItemVariants}
