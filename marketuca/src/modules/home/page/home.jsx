@@ -5,12 +5,12 @@ import FranjaAzul from '../components/FranjaAzul';
 import HowItWorks from '../components/HowItWorks';
 import Benefits from '../components/Benefits';
 import Footer from '../../utils/footer/Footer.jsx';
-import NavbarNoAuth from "../../utils/navbar/NavBarNoAuth.jsx";
+import NavbarHome from "../../utils/navbar/NavbarHome.jsx";
 
 const Home = () => {
   return (
     <div>
-      <NavbarNoAuth />
+      <NavbarHome />
       <Hero />
       <FranjaAzul />
       <Resources />
