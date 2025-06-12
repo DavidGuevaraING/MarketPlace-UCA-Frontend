@@ -19,6 +19,12 @@ const profile = () => {
                     : [...prev, productId]
             );
         };
+    const user = {
+        name: "Juan Pérez",
+        email: "juan.perez@uca.edu.sv",
+        role: "STUDENT",
+        faculty: "Facultad de Ingeniería y Arquitectura"
+    };
 
 
     let products = [  {
@@ -54,7 +60,8 @@ const profile = () => {
             <Navbar
                 isAdmin={true}
             />
-            <Profile/>
+            <Profile
+            user={user}/>
             <ProductCarousel
                 products={products}
                 handleProductClick={handleProductClick}

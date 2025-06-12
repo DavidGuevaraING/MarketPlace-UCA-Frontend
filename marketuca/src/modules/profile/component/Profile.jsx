@@ -4,14 +4,10 @@ import ParticlesBackground from "../../utils/ParticlesBackground";
 import ChangePasswordModal from "../modals/ChangePasswordModal.jsx";
 
 
-const Profile = () => {
+const Profile = ({user}) => {
     // Simulación de usuario (en un caso real, lo traerías del contexto o API)
-    const user = {
-        name: "Juan Pérez",
-        email: "juan.perez@uca.edu.sv",
-        role: "STUDENT",
-        faculty: "Facultad de Ingeniería y Arquitectura"
-    };
+
+
 //esta wea la arreglare cuando ya tengamos bien los productos
     const [showModal, setShowModal] = useState(false);
 
