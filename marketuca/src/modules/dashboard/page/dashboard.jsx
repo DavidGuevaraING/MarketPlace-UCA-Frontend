@@ -91,6 +91,7 @@ export default function Dashboard() {
           cartCount={cart.reduce((total, item) => total + item.quantity, 0)}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          isAdmin={true}
         />
         <HeroSection onSellClick={() => setIsSellModalOpen(true)} />
         <CategoriesSection

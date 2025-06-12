@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import ParticlesBackground from "../../utils/ParticlesBackground";
 import ChangePasswordModal from "../modals/ChangePasswordModal.jsx";
 
+
 const Profile = () => {
     // Simulación de usuario (en un caso real, lo traerías del contexto o API)
     const user = {
@@ -18,6 +19,7 @@ const Profile = () => {
         // Aquí puedes hacer fetch/axios al backend
         console.log("Cambiar contraseña:", { currentPassword, newPassword });
     };
+
     return (
         <div className="relative h-auto bg-gray-50">
             <ParticlesBackground />

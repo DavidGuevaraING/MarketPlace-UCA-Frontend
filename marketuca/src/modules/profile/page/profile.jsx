@@ -4,6 +4,7 @@ import Profile from "../component/Profile.jsx";
 import ProductCarousel from "../component/ProductCarousel.jsx";
 import {useState} from "react";
 
+
 const profile = () => {
 
      // const [products, setProducts] = useState([]);
@@ -50,7 +51,9 @@ const profile = () => {
     }]
     return (
         <div>
-            <Navbar/>
+            <Navbar
+                isAdmin={true}
+            />
             <Profile/>
             <ProductCarousel
                 products={products}

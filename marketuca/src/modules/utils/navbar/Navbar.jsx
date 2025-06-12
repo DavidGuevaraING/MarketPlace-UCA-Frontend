@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
+const Navbar = ({ searchQuery, setSearchQuery, cartCount, isAdmin}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const buttonVariants = {
@@ -168,12 +168,27 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
                                             <Heart className="w-4 h-4" />
                                             <span>Mis favoritos</span>
                                         </motion.div>
+                                        {isAdmin && (
+                                            <motion.div
+                                                variants={menuItemVariants}
+                                                whileHover="hover"
+                                                className="flex items-center gap-2 px-4 py-2 text-gray-700 cursor-pointer"
+                                                onClick={() => {
+                                                    setIsMenuOpen(false);
+                                                    window.location.href = "/waitlist";
+                                                }}
+                                            >
+                                                <ShoppingCart className="w-4 h-4" />
+                                                <span>Lista de espera</span>
+                                            </motion.div>
+                                        )}
                                         <motion.div
                                             variants={menuItemVariants}
                                             whileHover="hover"
                                             className="flex items-center gap-2 px-4 py-2 text-gray-700 cursor-pointer border-t border-gray-200"
                                             onClick={handleLogout}
                                         >
+
                                             <LogOut className="w-4 h-4" />
                                             <span>Cerrar sesión</span>
                                         </motion.div>
