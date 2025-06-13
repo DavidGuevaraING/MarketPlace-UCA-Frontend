@@ -1,6 +1,7 @@
 // pages/PendingProducts.jsx
 import { useState } from "react";
 import ProductCard from "../modules/ProductCard.jsx";
+import ParticlesBackground from "../../utils/ParticlesBackground.jsx";
 
 const mockProducts = [
     {
@@ -39,9 +40,10 @@ const PendingProducts = () => {
     };
 
     return (
-        <div className={"min-h-screen"}>
+        <div className={"min-h-screen relative"}>
+            <ParticlesBackground/>
             <div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+                className="relative z-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
                 {products.map(product => (
                     <ProductCard
                         key={product.id}

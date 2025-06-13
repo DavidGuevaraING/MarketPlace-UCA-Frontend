@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { Search, ShoppingCart, MessageSquare, Heart, User, ShoppingBag, LogOut } from "lucide-react";
+import {
+    Search,
+    ShoppingCart,
+    MessageSquare,
+    Heart,
+    User,
+    ShoppingBag,
+    LogOut,
+    BookUp, ClockAlert
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -62,7 +71,7 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount, isAdmin}) => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="sticky top-0 z-50 bg-white border-white-b shadow-sm"
+            className="sticky top-0 z-50 bg-white border-white-b shadow-sm rounded-md"
         >
             <div className="container flex items-center justify-between h-16 px-4 mx-auto">
 
@@ -178,8 +187,22 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount, isAdmin}) => {
                                                     window.location.href = "/waitlist";
                                                 }}
                                             >
-                                                <ShoppingCart className="w-4 h-4" />
+                                                <ClockAlert className="w-4 h-4" />
                                                 <span>Lista de espera</span>
+                                            </motion.div>
+                                        )}
+                                        {isAdmin && (
+                                            <motion.div
+                                                variants={menuItemVariants}
+                                                whileHover="hover"
+                                                className="flex items-center gap-2 px-4 py-2 text-gray-700 cursor-pointer"
+                                                onClick={() => {
+                                                    setIsMenuOpen(false);
+                                                    window.location.href = "/adminman";
+                                                }}
+                                            >
+                                                <BookUp className="w-4 h-4" />
+                                                <span>Manejo de administrador</span>
                                             </motion.div>
                                         )}
                                         <motion.div
