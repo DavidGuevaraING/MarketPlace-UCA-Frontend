@@ -8,13 +8,17 @@ const UserCard = ({ user, onPromote }) => {
     };
 
     return (
-        <motion.div className="bg-gray-100 w-full flex flex-col gap-2 mt-4 p-4 justify-center rounded shadow">
+        <motion.div className="bg-gray-100 w-full flex flex-col gap-2 mt-4 p-4 justify-center rounded-lg shadow-2xs"
+            initial={{y:30}}
+        whileInView={{y:0}}
+        transition={{duration: 0.5}}>
+
             <h3 className="text-lg font-semibold">{user.name}</h3>
             <p>{user.email}</p>
             <p>Rol actual: {user.role}</p>
 
             <label className="flex flex-col items-center gap-2 mt-2">
-                <span>¿Convertir en ADMIN?</span>
+                <span className={"text-red-900 "}>¿Convertir en ADMIN?</span>
                 <input
                     type="checkbox"
                     onChange={handleCheckboxChange}

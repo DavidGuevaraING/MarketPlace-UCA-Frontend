@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import UserCard from "./UserCard.jsx";
+import ParticlesBackground from "../../utils/ParticlesBackground.jsx";
 
 // 🧪 Datos de prueba
 const mockUsers = [
@@ -71,9 +72,10 @@ const AcceptAdmin = () => {
     };
 
     return (
-        <motion.div className="min-h-screen flex flex-col items-center mt-4 text-center">
+        <motion.div className="relative min-h-screen flex flex-col items-center mt-4 text-center">
+            <ParticlesBackground/>
             <motion.h2
-                className="text-2xl font-bold text-gray-600 mb-6"
+                className="text-2xl font-bold text-gray-600 mb-6 z-20"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
@@ -82,11 +84,11 @@ const AcceptAdmin = () => {
             </motion.h2>
 
             {loading ? (
-                <p className="text-gray-500">Cargando usuarios...</p>
+                <p className="text-gray-500 z-20">Cargando usuarios...</p>
             ) : (
                 <motion.div
                     id="admin-display"
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6 w-1/2 px-4 mx-auto"
+                    className="grid z-20 grid-cols-1 md:grid-cols-2 gap-6 w-1/2 px-4 mx-auto"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
