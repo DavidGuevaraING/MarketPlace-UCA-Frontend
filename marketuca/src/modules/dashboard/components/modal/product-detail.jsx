@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Heart, MessageSquare, Share2, ShoppingCart, Star } from "lucide-react"
-import { Button } from "../ui/button"
+import { Button } from "../../../utils/ui/button"
 import { Modal } from "../modal/modal"
 
 export function ProductDetail({ product, isOpen, onClose, onAddToCart, isFavorite, onToggleFavorite }) {

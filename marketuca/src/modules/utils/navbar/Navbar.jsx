@@ -1,11 +1,20 @@
 import { useState } from "react";
-import { Search, ShoppingCart, MessageSquare, Heart, User, ShoppingBag, LogOut } from "lucide-react";
+import {
+    Search,
+    ShoppingCart,
+    MessageSquare,
+    Heart,
+    User,
+    ShoppingBag,
+    LogOut,
+    BookUp, ClockAlert
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
+const Navbar = ({ searchQuery, setSearchQuery, cartCount, isAdmin}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const buttonVariants = {
@@ -62,25 +71,28 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="sticky top-0 z-50 bg-white border-b shadow-sm"
+            className="sticky top-0 z-50 bg-white border-white-b shadow-sm rounded-md"
         >
             <div className="container flex items-center justify-between h-16 px-4 mx-auto">
 
-                <motion.div
-                    className="flex items-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <motion.img
-                        variants={owlVariants}
-                        animate="animate"
-                        className="h-8 w-8 sm:h-10 sm:w-10"
-                        src="/buho.png"
-                        alt="MarketPlace UCA Logo"
-                    />
-                    { /*<img src="/buho.png" alt="Logo búho" className="w-6 h-6" />*/}
-                    <span className="text-xl font-bold text-[#0056b3]">MarketPlace UCA</span>
-                </motion.div>
+                <Link to={{ pathname: "/dashboard" }}>
+                    <motion.div
+                        className="flex items-center gap-2 select-none"
+                        whileHover={{scale: 1.05}}
+                        transition={{duration: 0.3}}
+                    >
+                        <motion.img
+                            variants={owlVariants}
+                            animate="animate"
+                            className="h-8 w-8 sm:h-10 sm:w-10"
+                            src="/buho.png"
+                            alt="MarketPlace UCA Logo"
+                        />
+                        { /*<img src="/buho.png" alt="Logo búho" className="w-6 h-6" />*/}
+                        <span
+                            className="text-xl font-bold text-[#0056b3]">MarketPlace UCA</span>
+                    </motion.div>
+                </Link>
                 <div className="flex items-center max-w-md w-full relative">
                     <Input
                         type="text"
@@ -147,11 +159,11 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
                                             className="flex items-center gap-2 px-4 py-2 text-gray-700 cursor-pointer"
                                             onClick={() => {
                                                 setIsMenuOpen(false);
-                                                window.location.href = "/my-items"; // Recarga la página al redirigir
+                                                window.location.href = "/profile"; // Recarga la página al redirigir
                                             }}
                                         >
                                             <ShoppingBag className="w-4 h-4" />
-                                            <span>Mis artículos</span>
+                                            <span>Mi perfil</span>
                                         </motion.div>
                                         <motion.div
                                             variants={menuItemVariants}
@@ -165,12 +177,41 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount }) => {
                                             <Heart className="w-4 h-4" />
                                             <span>Mis favoritos</span>
                                         </motion.div>
+                                        {isAdmin && (
+                                            <motion.div
+                                                variants={menuItemVariants}
+                                                whileHover="hover"
+                                                className="flex items-center gap-2 px-4 py-2 text-gray-700 cursor-pointer"
+                                                onClick={() => {
+                                                    setIsMenuOpen(false);
+                                                    window.location.href = "/waitlist";
+                                                }}
+                                            >
+                                                <ClockAlert className="w-4 h-4" />
+                                                <span>Lista de espera</span>
+                                            </motion.div>
+                                        )}
+                                        {isAdmin && (
+                                            <motion.div
+                                                variants={menuItemVariants}
+                                                whileHover="hover"
+                                                className="flex items-center gap-2 px-4 py-2 text-gray-700 cursor-pointer"
+                                                onClick={() => {
+                                                    setIsMenuOpen(false);
+                                                    window.location.href = "/adminman";
+                                                }}
+                                            >
+                                                <BookUp className="w-4 h-4" />
+                                                <span>Manejo de administrador</span>
+                                            </motion.div>
+                                        )}
                                         <motion.div
                                             variants={menuItemVariants}
                                             whileHover="hover"
                                             className="flex items-center gap-2 px-4 py-2 text-gray-700 cursor-pointer border-t border-gray-200"
                                             onClick={handleLogout}
                                         >
+
                                             <LogOut className="w-4 h-4" />
                                             <span>Cerrar sesión</span>
                                         </motion.div>

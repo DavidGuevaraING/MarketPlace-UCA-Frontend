@@ -2,7 +2,7 @@
 import { motion} from "framer-motion";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const NavbarNoAuth = () => {
     // Animación para el búho (solo la imagen)
     const owlVariants = {
         animate: {
@@ -25,11 +25,11 @@ const Navbar = () => {
         >
             <div className="container flex items-center justify-between h-16 px-2 mx-auto">
                 <Link to={"/"}>
-                <motion.div
-                    className="flex items-center gap-2"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                >
+                    <motion.div
+                        className="flex items-center gap-2"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
+                    >
 
                         <motion.img
                             variants={owlVariants}
@@ -39,13 +39,13 @@ const Navbar = () => {
                             alt="MarketPlace UCA Logo"
                         />
 
-                    { /*<img src="/buho.png" alt="Logo búho" className="w-6 h-6" />*/}
-                    <span className="text-xl font-bold text-[#0056b3]">MarketPlace UCA</span>
-                </motion.div>
+                        { /*<img src="/buho.png" alt="Logo búho" className="w-6 h-6" />*/}
+                        <span className="text-xl font-bold text-[#0056b3]">MarketPlace UCA</span>
+                    </motion.div>
                 </Link>
-                </div>
+            </div>
         </motion.nav>
     );
 };
 
-export default Navbar;
+export default NavbarNoAuth;

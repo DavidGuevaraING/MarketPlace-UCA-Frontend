@@ -21,7 +21,7 @@ const LoginForm = () => {
                             <input
                                 type="email"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                                placeholder="correo@ejemplo.com"
+                                placeholder="correo@uca.edu.sv"
                                 required
                             />
                         </div>

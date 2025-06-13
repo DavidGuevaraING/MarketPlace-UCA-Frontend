@@ -3,7 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useDashboard } from "../hooks/useDashboard";
-import Navbar from "../components/Navbar";
+import Navbar from "../../utils/navbar/Navbar.jsx";
 import { ProductDetail } from "../components/modal/product-detail";
 
 const FavoritesPage = () => {

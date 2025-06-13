@@ -1,11 +1,12 @@
-import Navbar from "../components/Navbar.jsx";
-import Footer from "../components/Footer.jsx";
+
+import Footer from "../../utils/footer/Footer.jsx";
 import LoginForm from "../components/LoginForm.jsx";
+import NavbarNoAuth from "../../utils/navbar/NavBarNoAuth.jsx";
 
 const login = () => {
     return(
         <div>
-            <Navbar/>
+            <NavbarNoAuth/>
             <LoginForm/>
             <Footer/>
 

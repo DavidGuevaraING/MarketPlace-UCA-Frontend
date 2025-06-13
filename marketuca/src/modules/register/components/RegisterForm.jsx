@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
-import React, {useState} from "react";
-import Particles from "react-tsparticles";
+import React, { useState } from "react";
 import Modal from "../modal/modal.jsx";
 import ParticlesBackground from "../../utils/ParticlesBackground.jsx";
 
 const RegisterForm = () => {
     const [modalOpen, setModalOpen] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Validación y lógica de envío aquí...
         setModalOpen(true); // Mostrar modal
     };
+
     return (
         <section className="relative min-h-screen">
-            <ParticlesBackground/>
+            <ParticlesBackground />
             <div className="absolute inset-0 z-0" />
 
             {/* Contenedor del formulario */}
@@ -33,18 +33,18 @@ const RegisterForm = () => {
                                 <label className="block text-sm text-gray-600 mb-1">Nombre</label>
                                 <input
                                     type="text"
+                                    required
                                     className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
                                     placeholder="Juan"
-                                    required
                                 />
                             </div>
                             <div>
                                 <label className="block text-sm text-gray-600 mb-1">Apellido</label>
                                 <input
                                     type="text"
+                                    required
                                     className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
                                     placeholder="Pérez"
-                                    required
                                 />
                             </div>
                         </div>
@@ -52,36 +52,42 @@ const RegisterForm = () => {
                             <label className="block text-sm text-gray-600 mb-1">Correo electrónico</label>
                             <input
                                 type="email"
+                                required
                                 className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
                                 placeholder="correo@uca.edu.sv"
-                                required
                             />
                         </div>
                         <div>
                             <label className="block text-sm text-gray-600 mb-1">Facultad</label>
-                            <input
-                                type="text"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                                placeholder="Ingeniería y Arquitectura"
+                            <select
                                 required
-                            />
+                                defaultValue=""
+                                className="w-full px-4 py-2 text-gray-600 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                            >
+                                <option value="" disabled>Selecciona tu facultad</option>
+                                <option value="FCSH">Facultad de Ciencias Sociales y Humanidades</option>
+                                <option value="FCEE">Facultad de Ciencias Económicas y Empresariales</option>
+                                <option value="FIA">Facultad de Ingeniería y Arquitectura</option>
+                                <option value="Postgrados">Facultad de Postgrados</option>
+
+                            </select>
                         </div>
                         <div>
                             <label className="block text-sm text-gray-600 mb-1">Contraseña</label>
                             <input
                                 type="password"
+                                required
                                 className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
                                 placeholder="••••••••"
-                                required
                             />
                         </div>
                         <div>
                             <label className="block text-sm text-gray-600 mb-1">Confirmar contraseña</label>
                             <input
                                 type="password"
+                                required
                                 className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
                                 placeholder="••••••••"
-                                required
                             />
                         </div>
                         <motion.button
@@ -95,6 +101,7 @@ const RegisterForm = () => {
                     </form>
                 </motion.div>
             </div>
+
             {/* Modal de confirmación */}
             <Modal
                 isOpen={modalOpen}
