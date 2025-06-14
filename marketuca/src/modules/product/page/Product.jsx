@@ -42,6 +42,7 @@ const Product = () => {
 
   return(
       <motion.div>
+
           <Navbar isAdmin={true}/>
           <ProductDetail product={productMockup}/>
           <Footer/>

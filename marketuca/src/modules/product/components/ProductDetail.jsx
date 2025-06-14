@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ProductComments from "./ProductComments.jsx";
 import ParticlesBackground from "../../utils/ParticlesBackground.jsx";
+import Whatsapp from "../../utils/ui/Whatsapp.jsx";
 
 const ProductDetail = ({ product }) => {
     const {
@@ -12,7 +13,9 @@ const ProductDetail = ({ product }) => {
         user_id,
         category_id,
     } = product;
-
+    const handleContact = () => {
+      
+    }
     return (
 
         <motion.div
@@ -22,6 +25,7 @@ const ProductDetail = ({ product }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
+            <ParticlesBackground/>
 
             <div className={"relative z-20 max-w-6xl mx-auto flex" +
                 " flex-col" +
@@ -79,7 +83,7 @@ const ProductDetail = ({ product }) => {
                         <p className="leading-relaxed">{description}</p>
                     </motion.div>
 
-                    <motion.div
+                   {/* <motion.div
                         className="mt-auto text-sm text-gray-500"
                         initial={{opacity: 0}}
                         animate={{opacity: 1}}
@@ -88,7 +92,25 @@ const ProductDetail = ({ product }) => {
                         <p><strong>Categoría
                             ID:</strong> {category_id}</p>
                         <p><strong>Vendedor ID:</strong> {user_id}</p>
-                    </motion.div>
+                    </motion.div>*/}
+                    <div className={"w-auto"}>
+                        <motion.button
+                            onClick={handleContact}
+                            inital={{scale: 1, y: 30}}
+                            whileInView={{scale: 1, y: 0}}
+                            whileHover={{scale: 1.1}}
+                            className={"bg-[#25D366] rounded-xl" +
+                                " hover:bg-[#128C7E] transition" +
+                                " transition-colors duration-150" +
+                                " flex gap-2 p-2 items-center" +
+                                " justify-center text-center w-auto"}
+
+                        >
+                            <Whatsapp/>
+                            <span className={"text-md" +
+                                " text-gray-100"}>Contactame</span>
+                        </motion.button>
+                    </div>
                 </div>
 
             </div>
