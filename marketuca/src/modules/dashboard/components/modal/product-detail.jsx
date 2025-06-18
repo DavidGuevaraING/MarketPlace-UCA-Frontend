@@ -4,6 +4,9 @@ import { useState } from "react"
 import { Heart, MessageSquare, Share2, ShoppingCart, Star } from "lucide-react"
 import { Button } from "../../../utils/ui/button"
 import { Modal } from "../modal/modal"
+import {motion, scale} from "framer-motion"
+import Whatsapp from "../../../utils/ui/Whatsapp.jsx";
+import {Link} from "react-router-dom";
 
 export function ProductDetail({ product, isOpen, onClose, onAddToCart, isFavorite, onToggleFavorite }) {
   const [activeImage, setActiveImage] = useState(0)
@@ -21,6 +24,12 @@ export function ProductDetail({ product, isOpen, onClose, onAddToCart, isFavorit
       setQuantity(newQuantity)
     }
   }
+  const handleWhatsappClick = ({phoneNumber}) => {
+    const message = `Hola, estoy interesado en el producto: ${product.title}. ¿Podrías darme más información?`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
 
   if (!product) return null
 
@@ -95,8 +104,40 @@ export function ProductDetail({ product, isOpen, onClose, onAddToCart, isFavorit
               </div>
               <div>
                 <p className="font-medium">{product.seller}</p>
-                <p className="text-sm text-gray-500">Miembro desde 2023</p>
+
               </div>
+
+            </div>
+            <div className={"flex items-center justify-left mt-2 gap-5"}>
+              <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+              whileHover={{scale:1.05}}
+              onClick={handleWhatsappClick}
+              className={"bg-[#25D366] hover:bg-[#128C7E] transition-colors duration-150 flex gap-1 p-2 rounded-xl" +
+                  " text-white" +
+                  " shadow-md"}>
+
+
+                <Whatsapp/>
+                Contactame
+              </motion.button>
+              <Link to={{pathname: "/product"}}>
+                <motion.button
+                    initial={{opacity: 0, scale: 0.9}}
+                    whileInView={{opacity: 1, scale: 1}}
+                    transition={{duration: 0.3}}
+                    whileHover={{scale: 1.05}}
+                    className={"bg-[#0056b3] hover:bg-[#339CFF] transition-colors duration-150 flex gap-1 p-2" +
+                        " rounded-xl" +
+                        " text-white" +
+                        " shadow-md" +
+                        "  font-montserrat"}
+                >
+                  Mas detalles
+                </motion.button>
+              </Link>
             </div>
           </div>
           {/*
