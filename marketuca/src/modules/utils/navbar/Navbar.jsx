@@ -105,13 +105,7 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount, isAdmin}) => {
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 </div>
                 <div className="flex items-center gap-3">
-                    <motion.div whileHover="hover" whileTap="tap" variants={buttonVariants}>
-                        <Button variant="ghost" size="icon" className="rounded-full">
-                            <Link to="/">
-                                <MessageSquare className="w-5 h-5 text-[#0056b3]" />
-                            </Link>
-                        </Button>
-                    </motion.div>
+
                     <motion.div whileHover="hover" whileTap="tap" variants={buttonVariants}>
                         <Button variant="ghost" size="icon" className="rounded-full">
                             <Link to="/favorites">

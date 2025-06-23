@@ -3,7 +3,7 @@ import ProductComments from "./ProductComments.jsx";
 import ParticlesBackground from "../../utils/ParticlesBackground.jsx";
 import Whatsapp from "../../utils/ui/Whatsapp.jsx";
 
-const ProductDetail = ({ product }) => {
+const ProductDetail = ({ product}) => {
     const {
         title,
         description,
@@ -13,7 +13,12 @@ const ProductDetail = ({ product }) => {
         user_id,
         category_id,
     } = product;
+    /*const {name,
+        cellphone,
+
+    } = user*/
     const handleContact = () => {
+        //wa.me/+503${user.cellphone}
       
     }
     return (

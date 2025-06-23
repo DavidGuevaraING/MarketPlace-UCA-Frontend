@@ -72,7 +72,7 @@ const AcceptAdmin = () => {
     };
 
     return (
-        <motion.div className="relative min-h-screen flex flex-col items-center mt-4 text-center">
+        <motion.div className="relative min-h-screen flex flex-col items-center mt-4 text-center z-20   ">
             <ParticlesBackground/>
             <motion.h2
                 className="text-2xl font-bold text-gray-600 mb-6 z-20"

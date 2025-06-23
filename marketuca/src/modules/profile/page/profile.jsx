@@ -58,7 +58,8 @@ const profile = () => {
     return (
         <div>
             <Navbar
-                isAdmin={true}
+                isAdmin={true
+            }
             />
             <Profile
             user={user}/>
