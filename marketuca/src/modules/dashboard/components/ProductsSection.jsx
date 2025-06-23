@@ -2,7 +2,16 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 import { Heart } from "lucide-react";
 
-const ProductsSection = ({ products, loading, hasMore, loadMoreProducts, activeCategory, handleProductClick, favorites, toggleFavorite }) => {
+const ProductsSection = ({
+                             products,
+                             loading,
+                             hasMore,
+                             loadMoreProducts,
+                             activeCategory,
+                             onProductClick,    // <-- Nombre estándar del prop
+                             favorites,
+                             toggleFavorite,
+                         }) => {
     const productVariants = {
         hidden: { opacity: 0, y: 20 },
         visible: {
@@ -51,10 +60,16 @@ const ProductsSection = ({ products, loading, hasMore, loadMoreProducts, activeC
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.3 }}
                         whileHover={{ scale: 1.03, boxShadow: "0 10px 20px rgba(0, 86, 179, 0.15)", borderColor: "#339CFF" }}
-                        onClick={() => handleProductClick(product)}
+                        onClick={() => onProductClick(product)}
                     >
                         <div className="relative overflow-hidden aspect-square">
-                            <motion.img src={product.image} alt={product.title} className="object-cover w-full h-full" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }} />
+                            <motion.img
+                                src={product.image}
+                                alt={product.title}
+                                className="object-cover w-full h-full"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                            />
                             <motion.button
                                 className={`absolute top-2 right-2 rounded-full p-2 bg-white/80 backdrop-blur-sm ${favorites.includes(product.id) ? "text-red-500" : "text-gray-500"}`}
                                 onClick={(e) => {
@@ -74,14 +89,14 @@ const ProductsSection = ({ products, loading, hasMore, loadMoreProducts, activeC
                         <div className="p-4">
                             <div className="flex items-start justify-between gap-2">
                                 <h3 className="font-semibold text-gray-800">{product.title}</h3>
-                                <p className="text-lg font-bold text-[#0056b3]">${product.price.toFixed(2)}</p>
+                                <p className="text-lg font-bold text-[#0056b3]">${product.price?.toFixed(2) ?? "0.00"}</p>
                             </div>
                             <div className="flex items-center mt-2 text-sm text-gray-500">
                                 <span>{product.condition}</span>
                                 <span className="mx-2">•</span>
                                 <div className="flex items-center">
                                     <span className="text-yellow-500">★</span>
-                                    <span className="ml-1">{product.rating}</span>
+                                    <span className="ml-1">{product.rating ?? "4.5"}</span>
                                 </div>
                             </div>
                             <div className="flex items-center justify-between mt-4">
@@ -91,7 +106,7 @@ const ProductsSection = ({ products, loading, hasMore, loadMoreProducts, activeC
                                         className="bg-gradient-to-r from-[#0056b3] to-[#339CFF] hover:from-[#339CFF] hover:to-[#0056b3] text-white px-3 py-1 rounded"
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            handleProductClick(product);
+                                            onProductClick(product);
                                         }}
                                     >
                                         Ver detalles

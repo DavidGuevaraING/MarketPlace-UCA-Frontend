@@ -47,7 +47,20 @@ const RegisterForm = () => {
                                     placeholder="Pérez"
                                 />
                             </div>
+
                         </div>
+                        <div>
+                            <label className="block text-sm text-gray-600 mb-1">Teléfono</label>
+                            <input
+                                type="tel"
+                                required
+                                pattern="^\+503[267][0-9]{7}$"
+                                title="Debe ingresar un número salvadoreño válido. Ejemplo: +50377777777"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                placeholder="+50377777777"
+                            />
+                        </div>
+
                         <div>
                             <label className="block text-sm text-gray-600 mb-1">Correo electrónico</label>
                             <input

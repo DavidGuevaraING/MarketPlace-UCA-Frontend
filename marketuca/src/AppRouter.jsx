@@ -10,11 +10,12 @@ import WaitingList from "./modules/waiting/page/WaitingList.jsx";
 import AdminManager
     from "./modules/adminManager/page/AdminManager.jsx";
 import Product from "./modules/product/page/Product.jsx";
+import DashboardBackend from "./modules/dashboard/page/dashboardBackend.jsx";
 export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<DashboardBackend />} />
       <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register />} />
