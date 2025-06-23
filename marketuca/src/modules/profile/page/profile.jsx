@@ -23,7 +23,8 @@ const profile = () => {
         name: "Juan Pérez",
         email: "juan.perez@uca.edu.sv",
         role: "STUDENT",
-        faculty: "Facultad de Ingeniería y Arquitectura"
+        faculty: "Facultad de Ingeniería y Arquitectura",
+        number: "+50377777777"
     };
 
 
