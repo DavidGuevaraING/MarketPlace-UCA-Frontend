@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import { Upload } from "lucide-react"
-import { Button } from "../../../utils/ui/button"
-import { Input } from "../../../utils/ui/input"
+import { Button } from "../ui/button"
+import { Input } from "../ui/input"
 import { Modal } from "../modal/modal"
 
 export function SellProductModal({ isOpen, onClose, onSubmit, categories }) {
