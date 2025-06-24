@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDashboard } from "../hooks/useDashboard";
 import Navbar from "../../utils/navbar/Navbar.jsx";
 import { ProductDetail } from "../components/modal/product-detail";
+import ParticlesDashboard
+  from "../../utils/ui/ParticlesDashboard.jsx";
 
 const FavoritesPage = () => {
   const {
@@ -68,6 +70,7 @@ const FavoritesPage = () => {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
+      <ParticlesDashboard/>
       <div className="container px-4 py-12 mx-auto z-10">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <h2 className="text-3xl font-bold text-gray-800">Favoritos</h2>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import {Link} from "react-router-dom";
 
 const HeroSection = ({ onSellClick }) => {
   const heroVariants = {
@@ -32,11 +33,15 @@ const HeroSection = ({ onSellClick }) => {
                 Vender un producto
               </button>
             </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="z-10">
-              <button className="text-white border-white px-6 sm:px-8 py-2 sm:py-3 rounded-md border-2 hover:bg-white/10 transition-colors">
-                Explorar mis Ventas
-              </button>
-            </motion.div>
+            <Link to={{pathname: "/profile"}}>
+              <motion.div whileHover={{scale: 1.05}}
+                          whileTap={{scale: 0.95}} className="z-10">
+                <button
+                    className="text-white border-white px-6 sm:px-8 py-2 sm:py-3 rounded-md border-2 hover:bg-white/10 transition-colors">
+                  Explorar mis Ventas
+                </button>
+              </motion.div>
+            </Link>
           </motion.div>
         </div>
       </div>
