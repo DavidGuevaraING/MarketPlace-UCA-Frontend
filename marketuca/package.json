@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.5",
-    "axios": "^1.9.0",
-    "axios-mock-adapter": "^2.1.0",
+    "axios": "^1.10.0",
+    "dompurify": "^3.2.6",
     "framer-motion": "^12.9.4",
     "init": "^0.1.2",
     "lucide-react": "^0.510.0",
@@ -20,6 +20,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-error-boundary": "^6.0.0",
+    "react-hook-form": "^7.58.1",
     "react-router-dom": "^7.5.3",
     "react-tsparticles": "1.37.5",
     "shadcn": "^2.5.0",
