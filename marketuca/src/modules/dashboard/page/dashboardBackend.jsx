@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import {AuthContext} from "../../../context/AuthContext.jsx";
 import useAuth from "../../../hooks/useAuth.js";
-import {getAllProducts} from "../productService.js";
+import {getAllProducts} from "../services/productService.js";
 
 export default function Dashboard() {
   const { token, isAuthenticated } = useContext(AuthContext);

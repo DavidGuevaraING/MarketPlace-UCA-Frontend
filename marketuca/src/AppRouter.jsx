@@ -21,7 +21,7 @@ export const AppRouter = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path={"/waitlist"} element={<WaitingList isAdmin={true} />} />
         <Route path={"/adminman"} element={<AdminManager isAdmin={true} />} />
-        <Route path={"/product"} element={<Product/>}/>
+        <Route path={"/product/:id"} element={<Product/>}/>
     </Routes>
   );
 };

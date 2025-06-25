@@ -4,47 +4,44 @@ import {useEffect, useState} from "react";
 import Navbar from "../../utils/navbar/Navbar.jsx";
 import Footer from "../../utils/footer/Footer.jsx";
 import ProductDetail from "../components/ProductDetail.jsx";
+import useAuth from "../../../hooks/useAuth.js";
+import {getProductById} from "../services/productService.js";
 
 
 
 const Product = () => {
-    const productMockup = {
-        "id": 1,
-        "title": "Laptop Dell",
-        "description": "Laptop en excelente estado",
-        "price": 500.0,
-        "condition": "Usado",
-        "image": "https://picsum.photos/400/300?random=1",
-        "user_id": 3,
-        "category_id": 2
-    }
-/*    const {id} = useParams();
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try{
-                const res = await fetch(`https://ejemplo.com/${id}`);
-                const data = await res.json();
-                setProduct(data);
-            }
-            catch (e){
-                console.error(e);
+        const { id } = useParams();
+        const [product, setProduct] = useState(null);
+        const [loading, setLoading] = useState(true);
+        const { token, isAuthenticated } = useAuth; // si tienes autenticación
 
-            }
-            finally {
-                setLoading(false);
-            }
-        }
-        fetchProduct();
-    }, [id]);*/
+        useEffect(() => {
+            const fetchProduct = async () => {
+                try {
+                    // const token = user?.token; // descomenta si usas autenticación
+                    // const data = await getProductById(id, token);
+                    const data = await getProductById(token,id); // así si no usas autenticación
+                    setProduct(data);
+                } catch (e) {
+                    console.error("Error fetching product:", e);
+                    setProduct(null);
+                } finally {
+                    setLoading(false);
+                }
+            };
+
+            fetchProduct();
+        }, [id]);
+
+        if (loading) return <div>Cargando...</div>;
+        if (!product) return <div>No se encontró el producto</div>;
 
 
   return(
       <motion.div>
 
           <Navbar isAdmin={true}/>
-          <ProductDetail product={productMockup}/>
+          <ProductDetail product={product}/>
           <Footer/>
       </motion.div>
   )
