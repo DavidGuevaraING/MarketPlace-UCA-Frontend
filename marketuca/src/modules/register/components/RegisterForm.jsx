@@ -69,7 +69,7 @@ const RegisterForm = () => {
                                 {...register('telefono', {
                                     required: 'El teléfono es requerido',
                                     pattern: {
-                                        value: /^\+503[267][0-9]{7}$/,
+                                        value: /^[267][0-9]{7}$/,
                                         message: 'Debe ser un número salvadoreño válido (ej: +50377777777)',
                                     },
                                 })}
