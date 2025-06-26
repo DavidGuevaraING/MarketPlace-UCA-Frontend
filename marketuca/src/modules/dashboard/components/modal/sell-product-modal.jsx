@@ -6,7 +6,6 @@ import { Button } from "../../../utils/ui/button"
 import { Input } from "../../../utils/ui/input"
 import { Modal } from "../modal/modal"
 import {
-  postProduct,
   postProductAlternative
 } from "../../services/dashboardService.js"
 import { AuthContext } from "../../../../context/AuthContext.jsx"
