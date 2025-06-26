@@ -23,7 +23,6 @@ import {
   ShirtIcon, RulerIcon,
 } from "lucide-react";
 import {AuthContext} from "../../../context/AuthContext.jsx";
-import useAuth from "../../../hooks/useAuth.js";
 import {getAllProducts} from "../services/dashboardService.js";
 
 export default function Dashboard() {
