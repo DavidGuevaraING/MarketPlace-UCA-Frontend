@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from "./modules/home/page/home";
-import Dashboard from "./modules/dashboard/page/dashboard";
 import FavoritesPage from "./modules/dashboard/page/FavoritesPage";
 import Login from "./modules/login/page/login.jsx";
 import Register from "./modules/register/page/register.jsx";
@@ -22,7 +21,7 @@ export const AppRouter = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path={"/waitlist"} element={<WaitingList isAdmin={true} />} />
         <Route path={"/adminman"} element={<AdminManager isAdmin={true} />} />
-        <Route path={"/product"} element={<Product/>}/>
+        <Route path={"/product/:id"} element={<Product/>}/>
     </Routes>
   );
 };
