@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect, useContext} from "react";
 import axios from "axios";
 import Navbar from "../../utils/navbar/Navbar.jsx";
 import HeroSection from "../components/HeroSection";
@@ -22,8 +22,12 @@ import {
   User,
   ShirtIcon, RulerIcon,
 } from "lucide-react";
+import {AuthContext} from "../../../context/AuthContext.jsx";
+import useAuth from "../../../hooks/useAuth.js";
+import {getAllProducts} from "../services/dashboardService.js";
 
 export default function Dashboard() {
+  const { token, isAuthenticated } = useContext(AuthContext);
   const categories = [
     { id: "all", name: "Todo", icon: <Home className="w-5 h-5" /> },
     { id: "libros", name: "Libros", icon: <Book className="w-5 h-5" /> },
@@ -45,66 +49,22 @@ export default function Dashboard() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [isSellModalOpen, setIsSellModalOpen] = useState(false);
-
-  // Cargar productos
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("https://tu-api.com/products");
-        const mapped = response.data.map(item => ({
-          id: item.Product + "_" + (item.User?.id ?? Math.random()),
-          title: item.Product,
-          description: item.Description,
-          price: item.Price,
-          condition: item.Condition,
-          image: item.Images?.[0],
-          images: item.Images,
-          category: item.Category
-              ? item.Category
-                  .normalize('NFD')
-                  .replace(/[\u0300-\u036f]/g, '')
-                  .toLowerCase()
-              : "otros",
-          categoryId: "otros", // No existe el id numérico en tu JSON
-          seller: item.User?.username ?? "",
-          phoneNumber: item.User?.phoneNumber ?? "77777777",
-          comments: item.comments,
-        }));
-        setProducts(mapped);
+
+        const productsData = await getAllProducts(token);
+        setProducts(productsData);
       } catch (err) {
-        try {
-          const localRes = await fetch("/products.json");
-          const localData = await localRes.json();
-          const mapped = localData.map(item => ({
-            id: item.Product + "_" + (item.User?.id ?? Math.random()),
-            title: item.Product,
-            description: item.Description,
-            price: item.Price,
-            condition: item.Condition,
-            image: item.Images?.[0],
-            images: item.Images,
-            category: item.Category
-                ? item.Category
-                    .normalize('NFD')
-                    .replace(/[\u0300-\u036f]/g, '')
-                    .toLowerCase()
-                : "otros",
-            categoryId: "otros", // No existe el id numérico en tu JSON
-            seller: item.User?.username ?? "",
-            phoneNumber: item.User?.phoneNumber ?? "77777777",
-            comments: item.comments,
-          }));
-          setProducts(mapped);
-        } catch (localErr) {
-          setProducts([]);
-        }
+        setProducts([]);
       } finally {
         setLoading(false);
       }
     };
-    fetchProducts();
-  }, []);
+
+    if (isAuthenticated) fetchProducts();
+  }, [isAuthenticated, token]);
 
 
   const filteredProducts = products.filter(p => {
@@ -127,19 +87,6 @@ export default function Dashboard() {
   };
   const handleOpenSellModal = () => setIsSellModalOpen(true);
   const handleCloseSellModal = () => setIsSellModalOpen(false);
-  const handleSellProduct = (newProduct) => {
-    setProducts(prev => [
-      {
-        ...newProduct,
-        id: newProduct.title + "_" + Math.random(),
-        image: newProduct.images?.[0] || "",
-        seller: "Tú",
-        comments: [],
-      },
-      ...prev,
-    ]);
-    setIsSellModalOpen(false);
-  };
   const handleAddToCart = (product) => setCart(prev => [...prev, product]);
   const toggleFavorite = (productId) => setFavorites(prev =>
       prev.includes(productId)
@@ -152,6 +99,7 @@ export default function Dashboard() {
       <div className="relative min-h-screen">
         <ParticlesDashboard />
         <Navbar
+
             cartCount={cart.length}
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
@@ -182,7 +130,6 @@ export default function Dashboard() {
         <SellProductModal
             isOpen={isSellModalOpen}
             onClose={handleCloseSellModal}
-            onSubmit={handleSellProduct}
             categories={categories}
         />
 
