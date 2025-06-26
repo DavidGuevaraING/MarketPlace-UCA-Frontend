@@ -2,34 +2,49 @@ import { motion } from "framer-motion";
 import ProductComments from "./ProductComments.jsx";
 import ParticlesBackground from "../../utils/ParticlesBackground.jsx";
 import Whatsapp from "../../utils/ui/Whatsapp.jsx";
+import {useContext, useEffect, useState} from "react";
+import {getProductById} from "../services/productService.js";
+import {useParams} from "react-router-dom";
+import {AuthContext} from "../../../context/AuthContext.jsx";
 
-const ProductDetail = ({ product }) => {
-    if (!product) return null;
+const ProductDetail = ( ) => {
+    const { token, isAuthenticated } = useContext(AuthContext);
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // Desestructura según lo que devuelve getProductById
-    const {
-        title,
-        description,
-        price,
-        condition,
-        image,
-        images,
-        category,
-        seller,
-        phoneNumber,
-        comments = [],
-    } = product;
+    const {id} = useParams();
+
+
+
 
     const handleContact = () => {
         // Si el phoneNumber ya incluye el +503 perfecto, si no, puedes agregarlo aquí.
-        if (phoneNumber) {
+        if (product.phoneNumber) {
             // Remueve espacios y caracteres que no sean números o +
-            const cleaned = phoneNumber.replace(/\D/g, '');
+            const cleaned = product.phoneNumber.replace(/\D/g, '');
             window.open(`https://wa.me/503${cleaned}`, "_blank");
         }
     };
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const data = await getProductById(id, token);
+                setProduct(data);
+            } catch (e) {
+                console.error("Error fetching product:", e);
+                setProduct(null);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    return (
+        fetchProduct();
+    }, [id]);
+
+    if (loading) return <div>Cargando...</div>;
+    if (!product) return <div>No se encontró el producto</div>;
+
+   return (
         <motion.div
             className="min-h-screen py-8 my-4 relative"
             initial={{ opacity: 0, y: 40 }}
@@ -46,8 +61,8 @@ const ProductDetail = ({ product }) => {
                     transition={{ duration: 0.4 }}
                 >
                     <img
-                        src={image}
-                        alt={title}
+                        src={product.image}
+                        alt={product.title}
                         className="w-full h-auto object-contain rounded-lg"
                     />
                 </motion.div>
@@ -60,7 +75,7 @@ const ProductDetail = ({ product }) => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
                     >
-                        {title}
+                        {product.title}
                     </motion.h1>
 
                     <motion.p
@@ -69,7 +84,7 @@ const ProductDetail = ({ product }) => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                     >
-                        ${price}
+                        ${product.price}
                     </motion.p>
 
                     <motion.span
@@ -78,7 +93,7 @@ const ProductDetail = ({ product }) => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
                     >
-                        {condition}
+                        {product.condition}
                     </motion.span>
 
                     <motion.div
@@ -88,7 +103,7 @@ const ProductDetail = ({ product }) => {
                         transition={{ delay: 0.6 }}
                     >
                         <h2 className="text-lg font-semibold mb-2">Descripción</h2>
-                        <p className="leading-relaxed">{description}</p>
+                        <p className="leading-relaxed">{product.description}</p>
                     </motion.div>
 
                     <motion.div
@@ -97,10 +112,10 @@ const ProductDetail = ({ product }) => {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.7 }}
                     >
-                        <p><strong>Categoría:</strong> {category}</p>
-                        <p><strong>Vendedor:</strong> {seller}</p>
-                        {phoneNumber && (
-                            <p><strong>Teléfono:</strong> {phoneNumber}</p>
+                        <p><strong>Categoría:</strong> {product.category}</p>
+                        <p><strong>Vendedor:</strong> {product.seller}</p>
+                        {product.phoneNumber && (
+                            <p><strong>Teléfono:</strong> {product.phoneNumber}</p>
                         )}
                     </motion.div>
 
@@ -121,7 +136,7 @@ const ProductDetail = ({ product }) => {
                 </div>
             </div>
             {/* Pasa el productId a comentarios, si necesitas */}
-            <ProductComments productId={product.id} comments={comments} />
+            <ProductComments productId={id} token={token}/>
         </motion.div>
     );
 };
