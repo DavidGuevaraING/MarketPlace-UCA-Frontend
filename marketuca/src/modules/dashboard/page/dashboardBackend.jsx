@@ -87,19 +87,6 @@ export default function Dashboard() {
   };
   const handleOpenSellModal = () => setIsSellModalOpen(true);
   const handleCloseSellModal = () => setIsSellModalOpen(false);
-  const handleSellProduct = (newProduct) => {
-    setProducts(prev => [
-      {
-        ...newProduct,
-        id: newProduct.title + "_" + Math.random(),
-        image: newProduct.images?.[0] || "",
-        seller: "Tú",
-        comments: [],
-      },
-      ...prev,
-    ]);
-    setIsSellModalOpen(false);
-  };
   const handleAddToCart = (product) => setCart(prev => [...prev, product]);
   const toggleFavorite = (productId) => setFavorites(prev =>
       prev.includes(productId)
@@ -143,7 +130,6 @@ export default function Dashboard() {
         <SellProductModal
             isOpen={isSellModalOpen}
             onClose={handleCloseSellModal}
-            onSubmit={handleSellProduct}
             categories={categories}
         />
 
