@@ -91,7 +91,6 @@ const ProductsSection = ({
                                 <h3 className="font-semibold text-gray-800">{product.title}</h3>
                                 <p className="text-lg font-bold text-[#0056b3]">${product.price?.toFixed(2) ?? "0.00"}</p>
                             </div>
-                            <div className="flex items-center mt-2 text-sm text-gray-500"><span>{product.seller}</span></div>
                             <div className="flex items-center mt-2 text-sm text-gray-500">
                                 <span>{product.condition}</span>
                                 <span className="mx-2">•</span>
@@ -100,8 +99,8 @@ const ProductsSection = ({
                                     <span className="ml-1">{product.rating ?? "4.5"}</span>
                                 </div>
                             </div>
-                            <div className="flex mt-4">
-
+                            <div className="flex items-center justify-between mt-4">
+                                <span className="text-sm text-gray-600">{product.seller}</span>
                                 <motion.div whileHover="hover" whileTap="tap" variants={buttonVariants}>
                                     <button
                                         className="bg-gradient-to-r from-[#0056b3] to-[#339CFF] hover:from-[#339CFF] hover:to-[#0056b3] text-white px-3 py-1 rounded"

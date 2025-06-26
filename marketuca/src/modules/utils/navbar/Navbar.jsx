@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import { useState } from "react";
 import {
     Search,
     ShoppingCart,
@@ -13,11 +13,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Link } from "react-router-dom";
-import {AuthContext} from "../../../context/AuthContext.jsx";
 
 const Navbar = ({ searchQuery, setSearchQuery, cartCount, isAdmin}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const {user, isAuthenticated} = useContext(AuthContext);
+
     const buttonVariants = {
         hover: { scale: 1.05, boxShadow: "0 5px 15px rgba(0, 86, 179, 0.2)" },
         tap: { scale: 0.95 },
@@ -142,8 +141,8 @@ const Navbar = ({ searchQuery, setSearchQuery, cartCount, isAdmin}) => {
                                             className="w-10 h-10 rounded-full object-cover"
                                         />
                                         <div>
-                                            <p className="font-semibold text-gray-800">{user?.name}</p>
-                                            <p className="text-sm text-gray-500">{user?.role}</p>
+                                            <p className="font-semibold text-gray-800">Juan Pérez</p>
+                                            <p className="text-sm text-gray-500">Estudiante</p>
                                         </div>
                                     </div>
                                     {/* Opciones del menú */}
