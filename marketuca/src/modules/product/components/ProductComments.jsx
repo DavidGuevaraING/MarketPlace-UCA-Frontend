@@ -1,48 +1,32 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-    getCommentByProductId, postComment
-} from "../services/productService.js";
 
-const ProductComments = ({ productId, token}) => {
+const ProductComments = ({ productId }) => {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const fetchComments = async () =>{
-            try {
-                const data = await getCommentByProductId(productId,token);
-                setComments(data);
-            }
-            catch (e) {
-                console.error("error fetching comments: ", e);
-                setComments([])
-            }
-        }
-        fetchComments();
+        const mockComments = [
+            { id: 1, text: "¿Este producto todavía está disponible?", author: "Karla" },
+            { id: 2, text: "¿Acepta pagos con tarjeta?", author: "Luis" },
+            { id: 3, text: "¿Hacen envíos a Santa Ana?", author: "Marta" },
+            { id: 4, text: "Estoy interesado, ¿cómo contacto?", author: "Carlos" },
+        ];
+        setComments(mockComments);
     }, [productId]);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (!newComment.trim()) return;
-        setLoading(true);
 
-        try {
-            const newCom = await postComment(productId, newComment, token);
-            // Mapea el comentario devuelto al formato local
-            const commentToAdd = {
-                code: newCom.code,
-                comment: newCom.comment,
-                username: newCom.username,
-            };
-            setComments((prev) => [commentToAdd, ...prev]);
-            setNewComment("");
-        } catch (err) {
-            alert("No se pudo publicar el comentario. Intenta de nuevo.");
-        } finally {
-            setLoading(false);
-        }
+        const commentToAdd = {
+            id: Date.now(),
+            text: newComment,
+            author: "Tú",
+        };
+
+        setComments((prev) => [...prev, commentToAdd]);
+        setNewComment("");
     };
 
     return (
@@ -70,7 +54,7 @@ const ProductComments = ({ productId, token}) => {
                     type="submit"
                     className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transitio"
                 >
-                    {loading ? "Publicando..." : "Publicar"}
+                    Publicar
                 </motion.button>
             </form>
 
@@ -81,15 +65,15 @@ const ProductComments = ({ productId, token}) => {
                 ) : (
                     comments.map((comment) => (
                         <motion.div
-                            key={comment.code}
+                            key={comment.id}
                             className="bg-gray-50 p-4 rounded-lg shadow"
                             initial={{ opacity: 0, y:30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3 , type: "spring" ,
                             bounce:0.2}}
                         >
-                            <p className="text-gray-800">{comment.comment}</p>
-                            <span className="text-sm text-gray-500">— {comment.username}</span>
+                            <p className="text-gray-800">{comment.text}</p>
+                            <span className="text-sm text-gray-500">— {comment.author}</span>
                         </motion.div>
                     ))
                 )}
